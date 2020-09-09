@@ -36,7 +36,7 @@ function setup() {
   backgroundi.scale = 2;
   
   ground = createSprite(width/2, height/2+300, displayWidth-120, 10);
-  //ground.visible = false;
+  ground.visible = false;
   
   player = createSprite(width/2-600, height/2+200, 1, 1);
   player.addAnimation("monkey", playerRuning);
@@ -184,7 +184,7 @@ function food() {
             
             //seting velocity and lifetime
             banana.velocityX = -5;
-            banana.lifetime = 120;
+            banana.lifetime = 270;
             
             //adding to banana group
             bananaGroup.add(banana);
@@ -196,7 +196,7 @@ function food() {
 function obstacles() {
       
       //printing obstacles after 300 frame count
-      if (frameCount % 50 === 0) {
+      if (frameCount % 300 === 0) {
             
             //creating obstacle 
             var obstacle = createSprite(1350, height/2+270, 1, 1);
@@ -210,7 +210,7 @@ function obstacles() {
             
             //setting velocity and lifetime
             obstacle.velocityX = -4;
-            obstacle.lifetime = 150;
+            obstacle.lifetime = 340;
             
             //adding to obstacles group
             obstacleGroup.add(obstacle);
