@@ -137,7 +137,7 @@ function draw() {
     obstacleGroup.setVelocityXEach(0);
     player.x = width/2;
     player.y = height/2;
-    player.scale = 0.34;
+    player.scale = 0.44;
     player.changeAnimation("playerWOnf", playerWon);
     obstacleGroup.setLifetimeEach(-1);
     bananaGroup.setLifetimeEach(-1);
@@ -151,7 +151,7 @@ function draw() {
     obstacleGroup.setVelocityXEach(0);
     player.x = width/2;
     player.y = height/2;
-    player.scale = 0.40;
+    player.scale = 0.50;
     player.changeAnimation("playerLOnf", playerLo);
     obstacleGroup.setLifetimeEach(-1);
     bananaGroup.setLifetimeEach(-1);
@@ -160,11 +160,17 @@ function draw() {
   
   drawSprites();
   
-  strokeWeight(10);
+  strokeWeight(7);
   stroke(0);
   fill(255);
   textSize(27);
-  text("Score: " + count, width/2+500, 50);
+  text("Score:   " + count, width/2+440, 50);
+
+  strokeWeight(7);
+  stroke(0);
+  fill(255);
+  textSize(27);
+  text("Life: " + life, width/2-600, 50);
 
 }
 
@@ -174,17 +180,16 @@ function food() {
       if (frameCount % 80 === 0) {
             
             //creating banana and printing at random position
-            var banana = createSprite(1350, 190, 1, 1);
-            banana.y = random(90, 190);
+            var banana = createSprite(1380, 400, 1, 1);
+            banana.y = random(90, 500);
              
-            
             //add image of banana
             banana.addImage("banana", bananaImage);
-            banana.scale = 0.05;
+            banana.scale = 0.1;
             
             //seting velocity and lifetime
             banana.velocityX = -5;
-            banana.lifetime = 270;
+            banana.lifetime = 280;
             
             //adding to banana group
             bananaGroup.add(banana);
@@ -199,18 +204,18 @@ function obstacles() {
       if (frameCount % 300 === 0) {
             
             //creating obstacle 
-            var obstacle = createSprite(1350, height/2+270, 1, 1);
+            var obstacle = createSprite(1380, height/2+270, 1, 1);
             
             //colliding with ground
             obstacle.collide(ground);
             
             //add image of obstacle
             obstacle.addImage("stone", obstacleImage);
-            obstacle.scale = 0.15;
+            obstacle.scale = 0.25;
             
             //setting velocity and lifetime
             obstacle.velocityX = -4;
-            obstacle.lifetime = 340;
+            obstacle.lifetime = 350;
             
             //adding to obstacles group
             obstacleGroup.add(obstacle);
