@@ -160,10 +160,11 @@ function draw() {
   
   drawSprites();
   
-  stroke("white");
-  fill("white");
-  textSize(20);
-  text("Score: " + count, 500, 50);
+  strokeWeight(10);
+  stroke(0);
+  fill(255);
+  textSize(27);
+  text("Score: " + count, width/2+500, 50);
 
 }
 
@@ -173,7 +174,7 @@ function food() {
       if (frameCount % 80 === 0) {
             
             //creating banana and printing at random position
-            var banana = createSprite(650, 190, 1, 1);
+            var banana = createSprite(1350, 190, 1, 1);
             banana.y = random(90, 190);
              
             
@@ -195,10 +196,10 @@ function food() {
 function obstacles() {
       
       //printing obstacles after 300 frame count
-      if (frameCount % 300 === 0) {
+      if (frameCount % 50 === 0) {
             
             //creating obstacle 
-            var obstacle = createSprite(width+50, height/2+250, 1, 1);
+            var obstacle = createSprite(1350, height/2+270, 1, 1);
             
             //colliding with ground
             obstacle.collide(ground);
