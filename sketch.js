@@ -38,7 +38,7 @@ function setup() {
   ground = createSprite(width/2, height/2+300, displayWidth-120, 10);
   //ground.visible = false;
   
-  player = createSprite(50, 230, 1, 1);
+  player = createSprite(width/2-600, height/2+200, 1, 1);
   player.addAnimation("monkey", playerRuning);
   player.addAnimation("playerLOnf", playerLo);
   player.addAnimation("playerWOnf", playerWon);
@@ -195,10 +195,10 @@ function food() {
 function obstacles() {
       
       //printing obstacles after 300 frame count
-      if (frameCount % 40 === 0) {
+      if (frameCount % 300 === 0) {
             
             //creating obstacle 
-            var obstacle = createSprite(655, height/2+250, 1, 1);
+            var obstacle = createSprite(width+50, height/2+250, 1, 1);
             
             //colliding with ground
             obstacle.collide(ground);
