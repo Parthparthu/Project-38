@@ -6,9 +6,9 @@ var count;
 var playerRuning, player, playerWon, playerLo;
 var ground;
 
-//var life = 3;
+var life = 3;
 
-//var gameState = "play";
+var gameState = "play";
 
 function preload() {
 
@@ -19,8 +19,8 @@ function preload() {
   bananaImage = loadImage("Banana.png");
   obstacleImage = loadImage("stone.png");
 
-  /*playerWon = loadImage("monkeW.png");
-  playerLo = loadImage("monkeL.png");*/
+  playerWon = loadImage("monkeW.png");
+  playerLo = loadImage("monkeL.png");
 
 }
 
@@ -29,7 +29,7 @@ function setup() {
 
   createCanvas(displayWidth-120, displayHeight-200);
   
-  backgroundi = createSprite(10, 200, 1, 1);
+  backgroundi = createSprite(200, 1, 1, 1);
   backgroundi.addImage("backgroud", backImage);
   backgroundi.x = backgroundi.width / 2;
   backgroundi.velocityX = -4;
@@ -40,8 +40,8 @@ function setup() {
   
   player = createSprite(width/2-600, height/2+200, 1, 1);
   player.addAnimation("monkey", playerRuning);
-  /*player.addAnimation("playerLOnf", playerLo);
-  player.addAnimation("playerWOnf", playerWon);*/
+  player.addAnimation("playerLOnf", playerLo);
+  player.addAnimation("playerWOnf", playerWon);
   player.scale = 0.20;
   
   bananaGroup = new Group();
@@ -54,13 +54,13 @@ function setup() {
 
 function draw() {
   
-  //edges = createEdgeSprites();
+  edges = createEdgeSprites();
 
-  background(255, 255, 255);
-  camera.x = player.x;
-  camera.y = player.y;
+  background(225);
+  //camera.x = player.x;
+  //camera.y = player.y;
   
-  //player.bounceOff(edges[2]);
+  player.bounceOff(edges[2]);
   
   player.collide(ground);
   
@@ -68,14 +68,14 @@ function draw() {
   
   obstacles();
   
-  /*if(gameState === "play")
-  {*/
+  if(gameState === "play")
+  {
 
     if (backgroundi.x < 320){
-      backgroundi.x = backgroundi.width/2;
+      backgroundi.x = backgroundi.width / 2;
     }
     
-    if (keyDown("space")&&(player.y > 90)) {
+    if (keyDown("space")) {
               
       player.velocityY = -10;
               
@@ -109,12 +109,12 @@ function draw() {
     if (obstacleGroup.isTouching(player)) {
    
       player.scale = 0.20;
-      //life = life - 1;
+      life = life - 1;
       obstacleGroup.destroyEach();
       
     }
 
-    /*if(life === 0)
+    if(life === 0)
     {
 
       gameState = "end";
@@ -155,7 +155,7 @@ function draw() {
     obstacleGroup.setLifetimeEach(-1);
     bananaGroup.setLifetimeEach(-1);
 
-  }*/
+  }
   
   drawSprites();
   
@@ -163,14 +163,13 @@ function draw() {
   stroke(0);
   fill(255);
   textSize(27);
-  text("Score:   " + count, player.x+400, player.y-300);
-  //width/2+440, 50
+  text("Score:   " + count, width/2+440, 50);
 
-  /*strokeWeight(7);
+  strokeWeight(7);
   stroke(0);
   fill(255);
   textSize(27);
-  text("Life: " + life, width/2-600, 50);*/
+  text("Life: " + life, width/2-600, 50);
 
 }
 
